@@ -1,32 +1,34 @@
-
-import java.util.Scanner; // this helps with user input 
-
+import java.util.Scanner; // allows for user input
 public class guessNumber{
-    // create a new scanner object called userInput
-    // by calling new and passing the Scanner constructor the scanner object is created
-    static Scanner userInput = new Scanner(System.in); 
+    public static void main (String[] args){
+        int randomNumber = (int) (Math.random() * 999 + 1); // this sets the random number to any number between 1 and 999
 
-    public static void main(String [] args){
-        System.out.print("enter a number: ");
-
-        if (userInput.hasNextInt()){ // if statement
-            int numberEntered = userInput.nextInt();
-            System.out.println("you entered:" + numberEntered);
-
-        int randomNumber = (int) (Math.random() * 101); // this will return a random number between 0 and 25
-            System.out.println(randomNumber + " is the Random Number");
-
-    
-    }
-
-    if (userInput.hasNextInt()){
+        Scanner userInput = new Scanner(System.in); // here is where user input will be prompted
+        int guess; // create a variable called guess
         
-        System.out.println(" congratulations, you guessed the correct number");
+        do{
+        System.out.println(" guess the random number");
+        guess = userInput.nextInt(); // assign the value of guess as the user input
 
-    }
-    else {
-        System.out.println("wrong guess, try again");
-    }
-    
+        System.out.println("The number you guessed is: " + " " + guess);
+
+        if(guess <= 0 || guess >999){
+            System.out.println("Please input valid integer");
+        }
+
+        else if(guess == randomNumber){
+            System.out.println("Congratulations, you were accurate with your guessing");
+        }
+        else if (guess > randomNumber){
+            System.out.println("This is too high, try a lower number.");
+        
+        }
+
+                else if( guess < randomNumber){
+            System.out.println("Your guess is too low, aim higher");
+        } 
+    } while (guess != randomNumber);
+ 
+        
     }
 }
